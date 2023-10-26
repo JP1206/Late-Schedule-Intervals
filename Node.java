@@ -1,6 +1,5 @@
 public class Node {
-    int start_time, deadline, duration, end_time, id; 
-    Node next;
+    int deadline, duration, slack, id;
     Boolean late;
 
     /* 
@@ -11,35 +10,38 @@ public class Node {
     */
 
     public Node(int idNum){
-        this.start_time = 0;
         this.deadline = 0;
         this.duration = 0;
-        this.end_time = 0;
         this.id = idNum;
-        this.next = null;
         this.late = false;
     }
 
-    public Node setNext(Node point_to_next){
-        return this.next = point_to_next;
+    public void setDeadline(int val) {
+        this.deadline = val;
     }
 
-    public boolean setLate(){
-        if(end_time > deadline){
-            return this.late = true;
-        } else {
-            return this.late = false;
-        }
+    public int getDeadline() {
+        return this.deadline;
     }
 
-    public void set_data(int duration_inp, int start_time_inp){
-        this.duration = duration_inp;
-        this.start_time = start_time_inp;
-        this.end_time = start_time + duration;
+    public void setDuration(int val) {
+        this.duration = val;
+    }
+
+    public int getDuration() {
+        return this.duration;
     }
 
     public int getID(){
         return this.id;
     }
 
+    public int setSlack(){
+        this.slack = this.deadline - this.duration;
+        return this.slack;
+    }
+
+    public int getSlack() {
+        return this.slack;
+    }
 }
